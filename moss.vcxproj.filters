@@ -20,6 +20,12 @@
     <ClInclude Include="src\ofApp.hpp">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Serial.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UpperHalf.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

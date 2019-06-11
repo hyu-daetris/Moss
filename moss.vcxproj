@@ -185,8 +185,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Constant.hpp" />
+    <ClInclude Include="src\Serial.hpp" />
     <ClInclude Include="src\LowerHalf.hpp" />
     <ClInclude Include="src\ofApp.hpp" />
+    <ClInclude Include="src\UpperHalf.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
