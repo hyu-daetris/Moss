@@ -20,7 +20,6 @@ public:
     }
 
     void draw() {
-
         if (trigged) {
             if (duration_check(start, runtime)) {
                 trigged = false;
@@ -34,6 +33,13 @@ public:
             }
         }
 
+        ofPushMatrix();
+
+        if (!Constant::DEBUG) {
+            ofTranslate(y, width);
+            ofRotateDeg(270);
+        }
+
         background[bg].draw(x, y, width, height);
         grandmother.draw(x, y, width, height);
         table.draw(x, y, width, height);
@@ -41,6 +47,8 @@ public:
         if (trigged) {
             lunchbox.draw(x, y, width, height);
         }
+
+        ofPopMatrix();
     }
 
     void update() {

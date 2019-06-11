@@ -11,11 +11,11 @@ class LowerHalf {
 public:
     LowerHalf(size_t x, size_t y, size_t width, size_t height) :
         x(x), y(y), width(width), height(height),
-        background("lower/background.png"), hand("lower/hand.png"),
+        background("lower/background.png"), hand("lower/hand.png"), base("lower/base.png"),
         n_tagged(0), reserved(false), go_up(false), delta(height / n_delta), idx(0)
     {
         size_t i = 0;
-        for (std::string filename : { "first", "second", "third", "cover" }) {
+        for (std::string filename : { "first", "second", "cover" }) {
             lunchbox[i++].load("lower/" + filename + ".png");
         }
     }
@@ -46,31 +46,41 @@ public:
         double pw = width * (1.0 - idx * ratio);
         double ph = height * (1.0 - idx * ratio);
 
+        ofPushMatrix();
+
+        if (!Constant::DEBUG) {
+            ofTranslate(0, width);
+            ofRotateDeg(270);
+        }
+
         background.draw(x, y, width, height);
         hand.draw(px, py, pw, ph);
+        base.draw(px, py, pw, ph);
 
-        size_t limit = n_tagged > 4 ? 4 : n_tagged;
+        size_t limit = n_tagged > (n_floor + 1) ? (n_floor + 1) : n_tagged;
         for (size_t i = 0; i < limit; ++i) {
             lunchbox[i].draw(px, py, pw, ph);
         }
 
         if (reserved && check_duration(thold)) {
             n_tagged += 1;
-            lunchbox[3].draw(px, py, pw, ph);
+            lunchbox[n_floor].draw(px, py, pw, ph);
 
             reserved = false;
         }
+
+        ofPopMatrix();
     }
 
     void update() {
         n_tagged += 1;
         
-        reserved = n_tagged == 3;
+        reserved = n_tagged == n_floor;
         if (reserved) {
             start = std::chrono::steady_clock::now();
         }
 
-        if (n_tagged >= 3 && !go_up) {
+        if (n_tagged >= n_floor && !go_up) {
             set_go_up();
         }
     }
@@ -81,10 +91,12 @@ private:
 
     ofImage background;
     ofImage hand;
+    ofImage base;
 
     size_t n_tagged;
+    static constexpr size_t n_floor = 2;
 
-    ofImage lunchbox[4];
+    ofImage lunchbox[n_floor + 1];
 
     bool reserved;
     std::chrono::time_point<std::chrono::steady_clock> start;

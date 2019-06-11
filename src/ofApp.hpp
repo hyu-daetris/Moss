@@ -33,9 +33,7 @@ public:
     }
 
     void mouseReleased(int x, int y, int button) {
-        if (Constant::DEBUG) {
-            trigger();
-        }
+        trigger();
     }
 
     void trigger() {

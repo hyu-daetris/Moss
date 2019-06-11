@@ -7,7 +7,13 @@
 
 //========================================================================
 int main( ){
-    ofSetupOpenGL(Constant::WIDTH, Constant::HEIGHT, OF_WINDOW);            // <-------- setup the GL context
+    ofWindowMode mode = Constant::FULL_SCREEN ? OF_FULLSCREEN : OF_WINDOW;
+    if (Constant::DEBUG) {
+        ofSetupOpenGL(Constant::WIDTH, Constant::HEIGHT, mode);            // <-------- setup the GL context
+    }
+    else {
+        ofSetupOpenGL(Constant::HEIGHT, Constant::WIDTH, mode);
+    }
 
     std::string port;
 
