@@ -10,8 +10,11 @@ namespace Constant
 
     constexpr size_t HALF = HEIGHT / 2;
 
-    constexpr bool DEBUG = false;
+    constexpr bool DEBUG = true;
+    constexpr bool ROTATE = true;
     constexpr bool FULL_SCREEN = true;
+    constexpr bool TOP_MOST = true;
+    constexpr bool TOP_MOST_RUNTHREAD = true;
 }
 
 #endif
