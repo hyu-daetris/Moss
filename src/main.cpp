@@ -2,23 +2,26 @@
 
 #include "ofApp.hpp"
 #include "Constant.hpp"
+#include "TopMost.hpp"
 
 #include <iostream>
 
 //========================================================================
 int main( ){
     ofWindowMode mode = Constant::FULL_SCREEN ? OF_FULLSCREEN : OF_WINDOW;
-    if (Constant::DEBUG) {
-        ofSetupOpenGL(Constant::WIDTH, Constant::HEIGHT, mode);            // <-------- setup the GL context
-    }
-    else {
-        ofSetupOpenGL(Constant::HEIGHT, Constant::WIDTH, mode);
-    }
+    constexpr size_t width = Constant::ROTATE ? Constant::HEIGHT : Constant::WIDTH;
+    constexpr size_t height = Constant::ROTATE ? Constant::WIDTH : Constant::HEIGHT;    
+    ofSetupOpenGL(width, height, mode);
 
     std::string port;
 
     std::cout << "port name : ";
     std::cin >> port;
+
+    std::unique_ptr<TopMost::MakeTop> topper;
+    if (Constant::TOP_MOST) {
+        topper = std::make_unique<TopMost::MakeTop>();
+    }
 
     // this kicks off the running of my app
     // can be OF_WINDOW or OF_FULLSCREEN
