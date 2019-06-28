@@ -26,6 +26,9 @@
     <ClInclude Include="src\UpperHalf.hpp">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\TopMost.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

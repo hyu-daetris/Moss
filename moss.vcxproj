@@ -188,6 +188,7 @@
     <ClInclude Include="src\Serial.hpp" />
     <ClInclude Include="src\LowerHalf.hpp" />
     <ClInclude Include="src\ofApp.hpp" />
+    <ClInclude Include="src\TopMost.hpp" />
     <ClInclude Include="src\UpperHalf.hpp" />
   </ItemGroup>
   <ItemGroup>
