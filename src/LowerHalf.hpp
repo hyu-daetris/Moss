@@ -48,7 +48,7 @@ public:
 
         ofPushMatrix();
 
-        if (!Constant::DEBUG) {
+        if (Constant::ROTATE) {
             ofTranslate(0, width);
             ofRotateDeg(270);
         }
