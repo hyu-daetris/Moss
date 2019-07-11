@@ -20,7 +20,7 @@ int main( ){
 
     std::unique_ptr<TopMost::MakeTop> topper;
     if (Constant::TOP_MOST) {
-        topper = std::make_unique<TopMost::MakeTop>();
+        topper = TopMost::MakeTop::CurrentProc();
     }
 
     // this kicks off the running of my app

@@ -15,6 +15,7 @@ namespace Constant
     constexpr bool FULL_SCREEN = true;
     constexpr bool TOP_MOST = true;
     constexpr bool TOP_MOST_RUNTHREAD = true;
+    constexpr bool TOP_MOST_LOG = false;
 }
 
 #endif
