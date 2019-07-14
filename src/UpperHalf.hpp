@@ -26,14 +26,19 @@ public:
                 grandmother.load("upper/grandmother.png");
             }
             else {
-                if (duration_check(twinkle_start, twinkle)) {
+                /*if (duration_check(twinkle_start, twinkle)) {
                     bg = 1 - bg;
                     twinkle_start = std::chrono::steady_clock::now();
-                }
+                }*/
             }
         }
 
         ofPushMatrix();
+
+        if (duration_check(twinkle_start, twinkle)) {
+            bg = 1 - bg;
+            twinkle_start = std::chrono::steady_clock::now();
+        }
 
         if (Constant::ROTATE) {
             ofTranslate(y, width);
@@ -80,7 +85,7 @@ private:
     time_point twinkle_start;
 
     static constexpr std::chrono::milliseconds runtime = 2000ms;
-    static constexpr std::chrono::milliseconds twinkle = 300ms;
+    static constexpr std::chrono::milliseconds twinkle = 1s; // 300ms;
 
     template <typename T>
     bool duration_check(time_point base, T thold) {
