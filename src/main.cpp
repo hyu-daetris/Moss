@@ -4,6 +4,7 @@
 #include "Constant.hpp"
 #include "TopMost.hpp"
 
+#include <fstream>
 #include <iostream>
 
 //========================================================================
@@ -15,8 +16,11 @@ int main( ){
 
     std::string port;
 
-    std::cout << "port name : ";
-    std::cin >> port;
+    std::fstream ifs("comport.txt");
+    if (ifs.is_open()) {
+        ifs >> port;
+        std::cout << "[*] input comport: " << port << std::endl;
+    }
 
     std::unique_ptr<TopMost::MakeTop> topper;
     if (Constant::TOP_MOST) {
